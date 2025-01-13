@@ -17,7 +17,8 @@ on:
   workflow_dispatch:
 
 env:
-  REPO_URL: https://github.com/coolsnowwolf/lede
+  #REPO_URL: https://github.com/coolsnowwolf/lede
+  REPO_URL: https://git.openwrt.org/openwrt/openwrt
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
@@ -82,7 +83,7 @@ jobs:
       id: package
       run: |
         cd openwrt
-        make defconfig
+        make menuconfig TARGET=ramips SUBTARGET=mt7621 PROFILE=xiaomi_redmi-router-ac2100
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
