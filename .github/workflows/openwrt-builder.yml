@@ -32,8 +32,20 @@ env:
 jobs:
   build:
     runs-on: ubuntu-22.04
+    permissions:
+      contents: write  # 确保内容写入权限
 
     steps:
+    - name: Check if Actor is the Repository Owner
+      id: check_owner
+      run: |
+        REPO_OWNER=$(echo "${{ github.repository }}" | cut -d '/' -f 1)
+        if [ "${{ github.actor }}" != "$REPO_OWNER" ]; then
+          echo "This workflow can only be triggered by the repository owner."
+          exit 1
+        fi
+      shell: bash
+        
     - name: Checkout
       uses: actions/checkout@main
 
