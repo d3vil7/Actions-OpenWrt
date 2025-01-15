@@ -94,7 +94,7 @@ jobs:
 
     - name: Load overclock patch
       run: |
-        [ -e $OVER_CLK ] && mv $OVER_CLK openwrt/target/linux/ramips/patches-6.6/
+        [ -e $OVER_CLK ] && mv $OVER_CLK openwrt/target/linux/ramips/patches-5.15/$OVER_CLK
         
     - name: Download package
       id: package
