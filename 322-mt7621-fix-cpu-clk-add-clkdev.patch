@@ -47,7 +47,15 @@
  
  #include <asm/bootinfo.h>
  #include <asm/mipsregs.h>
-@@ -25,11 +29,89 @@
+@@ -17,6 +21,7 @@
+ #include <asm/mips-cps.h>
+ #include <asm/mach-ralink/ralink_regs.h>
+ #include <asm/mach-ralink/mt7621.h>
++#include <asm/time.h>
+ 
+ #include "common.h"
+ 
+@@ -25,11 +30,89 @@
  static u32 detect_magic __initdata;
  static struct ralink_soc_info *soc_info_ptr;
  
@@ -158,24 +166,3 @@
  	of_clk_init(NULL);
  	timer_probe();
  }
---- /dev/null
-+++ b/include/dt-bindings/clock/mt7621-clk.h
-@@ -0,0 +1,18 @@
-+/*
-+ * Copyright (C) 2018 Weijie Gao <hackpascal@gmail.com>
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 as
-+ * published by the Free Software Foundation.
-+ *
-+ */
-+
-+#ifndef __DT_BINDINGS_MT7621_CLK_H
-+#define __DT_BINDINGS_MT7621_CLK_H
-+
-+#define MT7621_CLK_CPU		0
-+#define MT7621_CLK_BUS		1
-+
-+#define MT7621_CLK_MAX		2
-+
-+#endif /* __DT_BINDINGS_MT7621_CLK_H */
