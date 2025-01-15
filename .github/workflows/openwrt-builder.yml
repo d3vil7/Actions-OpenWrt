@@ -22,6 +22,7 @@ env:
   REPO_BRANCH: v23.05.5
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
+  OVER_CLK: 322-mt7621-fix-cpu-clk-add-clkdev.patch
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
   UPLOAD_BIN_DIR: true
@@ -91,6 +92,10 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
 
+    - name: Load overclock patch
+      run: |
+        [ -e $OVER_CLK ] && mv $OVER_CLK openwrt/target/linux/ramips/patches-6.6/
+        
     - name: Download package
       id: package
       run: |
