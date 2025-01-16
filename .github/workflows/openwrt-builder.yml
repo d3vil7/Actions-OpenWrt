@@ -22,8 +22,8 @@ env:
   REPO_BRANCH: v23.05.5
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
-  OVER_CLK: 322-mt7621-fix-cpu-clk-add-clkdev.patch
-  PATCH_VER: patches-5.15
+#  OVER_CLK: 322-mt7621-fix-cpu-clk-add-clkdev.patch
+#  PATCH_VER: patches-5.15
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
   UPLOAD_BIN_DIR: true
@@ -72,9 +72,9 @@ jobs:
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
-    - name: Load overclock patch
-      run: |
-        [ -e $OVER_CLK ] && mv $OVER_CLK openwrt/target/linux/ramips/$PATCH_VER/$OVER_CLK
+ #   - name: Load overclock patch
+ #     run: |
+ #       [ -e $OVER_CLK ] && mv $OVER_CLK openwrt/target/linux/ramips/$PATCH_VER/$OVER_CLK
         
     - name: Load custom feeds
       run: |
@@ -166,9 +166,9 @@ jobs:
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/*
 
-    - name: Sleep 60s
-      run: |
-        sleep 60
+#    - name: Sleep 60s
+#      run: |
+#        sleep 60
         
     - name: Delete workflow runs
       uses: Mattraks/delete-workflow-runs@main
