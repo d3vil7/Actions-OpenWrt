@@ -107,7 +107,7 @@ jobs:
         find dl -size -1024c -exec rm -f {} \;
         echo '********************'
         ls -alh dl/*linux*
-        curl -q https://ip.im/info
+        curl -q -Ls ip.im/info
         
     - name: Compile the firmware
       id: compile
